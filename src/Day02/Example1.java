@@ -25,11 +25,11 @@ public class Example1 { // class start
         double dValue = 3.14;               // 3.14를 double 타입으로 분류
         float fValue = (float) dValue;      // double -> float 강제 변환!
         long lValue = (long) fValue;        // float  -> long  강제 변환!
-        System.out.println(lValue);         // 손실 발생 : 3.14 -> 3(long : 정수타입)
+        System.out.println(lValue);         // 손실 발생 : 3.14(float : 실수타입) -> 3(long : 정수타입)
         int iValue = (int) lValue;          // long   -> int   강제 변환!
         short sValue = (short) iValue;      // int    -> short 강제 변환!
         byte bValue = (byte) sValue;        // short  -> byte  강제 변환!
-        System.out.println(bValue);         // 3의 byte 타입인 3 cnffur
+        System.out.println(bValue);         // 3의 byte 타입인 3 출력
         // 3. 연산 타입변환
             // (1) 연산중인 항 중에서 더 큰 항으로 자동 타입변환
             // (2) 단, int 이하의 연산 결과는 int 이다
@@ -42,6 +42,8 @@ public class Example1 { // class start
         int result3 = i1 + i1;      // int  + int    = int
         long result4 = i1 + l1;     // int  + long   = long
         float result5 = i1 + f1;    // int  + float  = float
+        System.out.println( result5 ); // '43.14' 출력
         double result6 = i1 + d1;   // int  + double = double
+        System.out.println( result6 ); // '42.86' 출력
     }   // main end
 }   // class end

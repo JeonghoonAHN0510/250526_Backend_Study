@@ -7,11 +7,11 @@ public class Example2 { // class start
 
         // [ 입력 함수 ] : 콘솔 화면에서 키보드로부터 입력받는 방법
         // 1. new Scanner(System.in); : 시스템(컴퓨터)으로부터 입력관련 기능(함수)을 제공하는 객체
-        // 기본형 = Scanner scan = new Scanner(System.in);
+        // 기본형 : Scanner scan = new Scanner(System.in);
         // 2. 종류
-        Scanner scan = new Scanner(System.in);
-   //(객체타입) (변수명) =  (   객체   );
-        // (1) .next()  : 입력받은 문자열 반환, 띄어쓰기 불가능
+        Scanner scan = new Scanner(System.in);  // 입력받게 해주는 객체를 scan이라는 변수에 저장하여 편하게 사용
+    //(객체타입) (변수명) =  (   객체   );
+        // (1) .next()  : 입력받은 문자열 반환, '띄어쓰기 불가능'
             // [1] Scanner 객체로부터 .next() 함수 호출
                 // new Scanner(System.in).next();
             // [2] Scanner 객체를 변수에 저장하여 재활용, 타입 변수명 = 자료;
@@ -20,9 +20,9 @@ public class Example2 { // class start
         String str1 = scan.next();    // == new Scanner(System.in).next();
         System.out.println("1. next result : "+ str1);
 
-        // (2) .nextLine() : 입력받은 문자열 반환, 띄어쓰기 가능
+        // (2) .nextLine() : 입력받은 문자열 반환, '띄어쓰기 가능'
             // String 변수명 = scan.nextLine();
-            // 주의할 점 : nextLine() 앞에 다른 next()가 존재하면 enter(완료)를 하나로 포함하므로 문제 발생
+            // 주의할점 : nextLine() 앞에 다른 next()가 존재하면 enter(완료)를 하나로 포함하므로 문제 발생
             // 해결방안 : nextLine() 앞에 무의미한 nextLine() 하나 추가한다!
         System.out.print("2. nextLine() : ");
         scan.nextLine();    // 무의미한 nextLine(), nextLine() 문제 해결을 위하여
