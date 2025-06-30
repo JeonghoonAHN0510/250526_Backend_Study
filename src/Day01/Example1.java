@@ -15,12 +15,12 @@ public class Example1 {
     // 클래스 = 설계도.
 
     // 비교1
-    int a = 10;                 // int 변수 선언
-    // System.out.print( a );      // 출력함수 실행 [X]
+    int a = 10;                     // int 변수 선언
+    // System.out.print( a );       // 출력함수 실행 [X]
 
     // 비교2
         // JS 실행 방법     : HTML 안에 포함된 JS 실행
-        // 자바를 실행 방법  : main() 함수가 실행되면서 코드를 순차적으로 읽는다.
+        // 자바 실행 방법  : main() 함수가 실행되면서 코드를 순차적으로 읽는다.
     public static void main(String[] args) {
         int b = 20;             // int 변수 선언
         System.out.print( b );  // 출력함수 실행 [O]
