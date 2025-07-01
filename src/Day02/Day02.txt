@@ -5,7 +5,7 @@
     3. int      : 4byte, +-21억 정도(정수의 기본형)
     4. long     : 8byte, +-21억 이상, 뒤에 L/l 붙이기
 - 실수
-    1. float    : 4byte, 소수점 8자리 표현, 뒤에 F/f 붙이ㅣㄱ
+    1. float    : 4byte, 소수점 8자리 표현, 뒤에 F/f 붙이기
     2. double   : 8byte, 소수점 17자리 표현(실수의 기본형)
 - 논리
     1. boolean  : 1byte, true / false
