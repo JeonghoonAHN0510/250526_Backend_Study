@@ -130,10 +130,10 @@ public class 실습3 { // class start
 //출력 예시:
 //삼각형의 넓이: 27.5
         System.out.print("밑변 : ");
-        double width = scan.nextDouble();
+        double base = scan.nextDouble();
         System.out.print("높이 : ");
         double height = scan.nextDouble();
-        double extent = width * height / 2.0;
+        double extent = base * height / 2.0;
         System.out.printf("삼격형의 넓이 : %.1f\n" , extent );
 
 //[문제 11] Scanner를 이용해 섭씨 온도를 double로 입력받아, 화씨 온도로 변환하여 출력하시오.
