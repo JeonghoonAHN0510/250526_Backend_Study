@@ -262,32 +262,33 @@ public class 실습4 { // class start
 //세 번째 정수: 8
 //출력 예시:
 //4, 8, 17
+        // temp를 이용하여, 순서 교체하는 방법 존재!!!
         System.out.print("첫번째 정수 : ");
         int num1 = scan.nextInt();
         System.out.print("두번째 정수 : ");
         int num2 = scan.nextInt();
         System.out.print("세번째 정수 : ");
         int num3 = scan.nextInt();
-        if ( num1 < num2 && num1 < num3 ){
-            System.out.print( num1 );
-            if ( num2 < num3 ){
-                System.out.printf(", %d, %d\n", num2, num3 );
-            }else {
-                System.out.printf(", %d, %d\n", num3, num2 );
+        if ( num1 < num2 && num1 < num3 ){                      // num1이 num2와 num3보다 각각 작다면
+            System.out.print( num1 );                           // num1 먼저 출력
+            if ( num2 < num3 ){                                 // num2가 num3보다 작다면
+                System.out.printf(", %d, %d\n", num2, num3 );   // num2 num3 순서로 출력
+            }else {                                             // 그렇지않으면(= num3이 num2보다 작다면)
+                System.out.printf(", %d, %d\n", num3, num2 );   // num3 num2 순서로 출력
             }
-        }else if ( num2 < num1 && num2 < num3 ){
-            System.out.print( num2 );
-            if ( num1 < num3 ){
-                System.out.printf(", %d, %d\n", num1, num3 );
-            }else {
-                System.out.printf(", %d, %d\n", num3, num1 );
+        }else if ( num2 < num1 && num2 < num3 ){                // num2가 num1과 num3보다 각각 작다면
+            System.out.print( num2 );                           // num2 먼저 출력
+            if ( num1 < num3 ){                                 // num1이 num3보다 작다면
+                System.out.printf(", %d, %d\n", num1, num3 );   // num1 num3 순서로 출력
+            }else {                                             // 그렇지않다면(= num3이 num1보다 작다면)
+                System.out.printf(", %d, %d\n", num3, num1 );   // num3 num1 순서로 출력
             }
-        }else {
-            System.out.print( num3 );
-            if ( num1 < num2 ){
-                System.out.printf(", %d, %d\n", num1, num2 );
-            }else {
-                System.out.printf(", %d, %d\n", num2, num1 );
+        }else {                                                 // 그렇지않다면(= num3이 num1과 num2보다 각각 작다면)
+            System.out.print( num3 );                           // num3 먼저 출력
+            if ( num1 < num2 ){                                 // num1이 num2보다 작다면
+                System.out.printf(", %d, %d\n", num1, num2 );   // num1 num2 순서로 출력
+            }else {                                             // 그렇지않으면(= num2가 num1보다 작다면)
+                System.out.printf(", %d, %d\n", num2, num1 );   // num2 num1 순서로 출력
             }
         }
 //[문제 15] 가위바위보 게임
@@ -306,14 +307,14 @@ public class 실습4 { // class start
         int player1 = scan.nextInt();
         System.out.print("플레이어1 (0:가위, 1:바위, 2:보) : ");
         int player2 = scan.nextInt();
-        if ( player1 > 2 || player2 > 2 ){
-            System.out.println("잘못된 입력입니다.");
+        if ( player1 > 2 || player2 > 2 ){              // 입력값이 2 초과면
+            System.out.println("잘못된 입력입니다.");      // 잘못된 입력
         }else if ( (player1 == 0 && player2 == 2) || (player1 == 1 && player2 == 0) || (player1 == 2 && player2 == 1) ){
             System.out.println("플레이어1 승리");
-        }else if ( (player2 == 0 && player1 == 2) || (player2 == 1 && player1 == 0) || (player2 == 2 && player1 == 1) ){
-            System.out.println("플레이어2 승리");
-        }else {
+        }else if ( player1 == player2 ){
             System.out.println("무승부");
+        }else {
+            System.out.println("플레이어2 승리");
         }
 
     } // main end
