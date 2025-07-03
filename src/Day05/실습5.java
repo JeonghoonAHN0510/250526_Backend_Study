@@ -3,7 +3,7 @@ package Day05;
 import java.util.Scanner;
 
 public class 실습5 { // class start
-    public static <array> void main(String[] args) { // main start
+    public static void main(String[] args) { // main start
 
 //[문제 1] for문을 사용하여 1부터 10까지의 숫자를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
     for ( int i = 1; i < 11 ; i++){
