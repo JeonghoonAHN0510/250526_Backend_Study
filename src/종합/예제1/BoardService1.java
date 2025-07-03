@@ -22,24 +22,19 @@ public class BoardService1 { // class start
            System.out.print("선택 : ");
            int option = scan.nextInt();
            if ( option == 1 ){  // 입력값이 1이라면
+               System.out.print("내용 : ");
+               String content = scan.next();                          // 내용 입력값을 content에 저장
+               System.out.print("작성자 : ");
+               String writer = scan.next();                           // 작성자 입력값을 writer에 저장
                if ( content1 == null && writer1 == null ){          // content1과 writer1이 비어있으면
-                   System.out.print("내용 : ");
-                   content1 = scan.next();                          // 내용 입력값을 content1에 저장
-                   System.out.print("작성자 : ");
-                   writer1 = scan.next();                           // 작성자 입력값을 writer1에 저장
-                   System.out.println("[안내] 글쓰기 성공");           // 안내문 출력
+                   content1 = content; writer1 = writer;
+                   System.out.println("[안내] 글쓰기 성공");
                }else if ( content2 == null && writer2 == null ){    // content2와 writer2이 비어있으면
-                   System.out.print("내용 : ");
-                   content2 = scan.next();                          // 내용 입력값을 content2에 저장
-                   System.out.print("작성자 : ");
-                   writer2 = scan.next();                           // 작성자 입력값을 writer2에 저장
-                   System.out.println("[안내] 글쓰기 성공");           // 안내문 출력
+                   content2 = content; writer2 = writer;
+                   System.out.println("[안내] 글쓰기 성공");
                }else if ( content3 == null && writer3 == null ){    // content3과 writer3이 비어있으면
-                   System.out.print("내용 : ");
-                   content3 = scan.next();                          // 내용 입력값을 content3에 저장
-                   System.out.print("작성자 : ");
-                   writer3 = scan.next();                           // 작성자 입력값을 writer3에 저장
-                   System.out.println("[안내] 글쓰기 성공");           // 안내문 출력
+                   content3 = content; writer3 = writer;
+                   System.out.println("[안내] 글쓰기 성공");
                }else {                                              // 비어있는 공간이 없다면
                    System.out.println("[경고] 게시물을 등록할 공간이 부족합니다.");  // 경고문 출력
                }
