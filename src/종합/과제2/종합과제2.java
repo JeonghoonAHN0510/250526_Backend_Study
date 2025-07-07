@@ -26,14 +26,14 @@ public class 종합과제2 { // 종합과제2 class start
                 // 배열에서 빈공간 찾기
                 for ( int i = 0; i < waitings.length; i++){     // waitings 배열 순회
                     if ( waitings[i] == null ){                 // i번째 waitings가 비어있다면
-                        waitings[i] = waiting;
-                        check = true;
+                        waitings[i] = waiting;                  // i번째 waitings에 생성된 객체 대입
+                        check = true;                           // 상태확인 변수 변경
                         break;
                     }
                 }
-                if ( check ){
+                if ( check ){       // check가 true라면
                     System.out.println("[안내] 대기 등록이 완료되었습니다.");
-                }else{
+                }else{              // check가 false라면
                     System.out.println("[경고] 더 이상 대기 등록을 할 수 없습니다.");
                 }
             }else if ( option == 2 ){   // 입력값이 2라면
