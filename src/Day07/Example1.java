@@ -48,8 +48,11 @@ public class Example1 { // Example1 class start
         System.out.println( cal2.isPowerOn );       // 아무 것도 안했기 때문에          false
         // 5. 매개변수 o, 반환값 x
         cal1.printSum( 3, 5 );  // x = 3, y = 5 저장 -> "8" 출력
-      //cal1.printSum( 3.14, 5.1 ); -> 인수값과 매개변수 타입이 불일치하면 오류 발생
+     // cal1.printSum( 3.14, 5.1 ); -> 인수값과 매개변수 타입이 불일치하면 오류 발생
         cal2.printSum( 1, 2 );  // x = 1, y = 2 저장 -> "계산기의 전원이 꺼져있습니다." 출력
+        // 6. 매개변수 o, 반환값 o     -> 반환값이 있으면, 주로 변수에 저장
+        int result2 = cal1.add( 10, 3 );        // 반환값이 int이므로 저장되는 변수 타입도 int
+        System.out.println( result2 );
 
     } // main end
 } // Example1 class end

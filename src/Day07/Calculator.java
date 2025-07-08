@@ -34,4 +34,15 @@ public class Calculator { // Calculator class start
             return; // 생략 가능
         }
     }
+    // 4) 매개변수 o, 반환값 o
+    int add( int x, int y ){
+        if ( isPowerOn ){
+            int result = x + y;
+            return result;
+            // return : 메소드를 호출했던 곳으로 반환되는 값
+        }else {
+            System.out.println("계산기의 전원이 꺼져있습니다.");
+            return 0;
+        }
+    }
 } // Calculator class end
