@@ -90,12 +90,5 @@ public class 실습8 { // 실습8 class start
         System.out.println( fee65 );            // 반환된 요금 출력
         System.out.println( fee140 );           // 반환된 요금 출력
 
-
-
-
-
-
-
-
     } // main end
 } // 실습8 class end
