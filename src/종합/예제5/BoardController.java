@@ -8,13 +8,26 @@ public class BoardController { // BoardController class start
     // 메소드명 : doPost
     // 매개변수 : 게시물 내용, 게시물 작성자 -> String content, String writer
     // 반환값 : 성공/실패 -> boolean
-
+    boolean doPost( String content, String writer ){
+        // 1. 생성자를 이용한 객체 만들기
+        Board board = new Board( content, writer);
+        // 2. 배열 내 빈 공간을 찾아서 -> 생성된 객체 대입
+        for ( int i = 0 ; i < boards.length; i++){
+            if ( boards[i] == null ){   // 만약 i번째 요소가 null이면
+                boards[i] = board;      // i번째 요소에 생성한 board 객체 대입
+                return true;            // return -> 메소드 반환값이면서 메소드의 종료를 의미.
+            } // if end
+        } // for end
+        return false;                   // 저장을 실패했을 때, false 반환
+    }
 
     // 2. 게시물 출력 기능 -> 객체들을 가지고 있는 배열 호출
     // 메소드명 : doGet
     // 매개변수 : X
     // 반환값 : boards -> Board[]
-
+    Board[] doGet(){
+        return boards;
+    }
 
 } // BoardController class end
 
