@@ -38,7 +38,7 @@ public class Example1 {
                 -> java.lang 패키지는 생략 가능(System, String ... )
         [ getter and setter ]
         1. 정의 : 클래스 내 private 멤버변수를 다른 클래스가 사용할 수 있도록하는 정의 함수
-        2. 저장/대입 목적 : setter
+        2. 저장/대입 목적 : setter -> 유효성 검사를 통한 안전한 멤버변수 관리
             public void set멤버변수명( 타입 매개변수 ){
                 this.멤버변수명 = 매개변수;
             }
