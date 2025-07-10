@@ -18,9 +18,12 @@ public class BankService { // BankService class start
             // 선택에 따라 출력하기
             if ( option == 1 ){         // 1을 선택하면
                 System.out.println("------- 계좌 등록 -------");
+                // 계좌번호와 비밀번호 입력받고
                 System.out.print("계좌번호 : ");      String accountId = scan.next();
                 System.out.print("비밀번호 : ");      String pwd = scan.next();
+                // 메소드를 이용한 결과값 얻기
                 boolean result = bc.accountRegis( accountId, pwd );
+                // 결과값에 따라 안내문 출력
                 if ( result ){
                     System.out.println("[안내] 계좌 등록이 완료되었습니다.");
                 }else {
@@ -28,10 +31,13 @@ public class BankService { // BankService class start
                 }
             }else if ( option == 2 ){   // 2를 선택하면
                 System.out.println("------- 입금 -------");
+                // 계좌번호와 비밀번호, 입금액을 입력받고
                 System.out.print("계좌번호 : ");      String accountId = scan.next();
                 System.out.print("비밀번호 : ");      String pwd = scan.next();
                 System.out.print("입금액 : ");        int money = scan.nextInt();
+                // 메소드를 이용한 결과값 얻기
                 boolean result = bc.deposit( accountId, pwd, money );
+                // 결과값에 따라 안내문 출력
                 if ( result ){
                     System.out.println("[안내] 입금이 완료되었습니다.");
                 }else {
