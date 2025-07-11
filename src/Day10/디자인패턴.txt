@@ -15,7 +15,7 @@
 3. 만드는 법
     1) 기본 생성자를 private로 선언한다.
           private 생성자명(){}
-    2) private static final로 객체를 선언한다.
+    2) private static final로 객체를 생성한다.
           private static final 클래스명 변수명 = new 생성자명();
     3) public static으로 getInstance 메소드를 선언한다. -> 자동완성이 된다? ( geti )
           public static 반환타입 getInstance(){
@@ -52,7 +52,7 @@
         View ---DTO---> Controller ---DTO---> Model(DAO)
     2) 주문 응답
         Model(DAO) ---DTO---> Controller ---DTO---> View
-8. 파일/폴더를 MVC 기준으로 구분
+8. 파일/패키지를 MVC 기준으로 구분(패키지명은 소문자로)
     - Project
         - Controller
             - MemberController
@@ -67,4 +67,4 @@
         - View (추후에 HTML로 대체)
             - MemberView
             - BoardView
-        - Appstart
+        - AppStart.class (main 함수를 갖는 클래스)
