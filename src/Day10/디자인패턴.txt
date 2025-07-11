@@ -1,8 +1,70 @@
 [ 디자인 패턴 ]
 1. 정의 : 소프트웨어 설계 과정에서 자주 발생하는 설계 유형
-2. 종류
+2. 학습할 종류
     1) 싱글톤 패턴
     2) MVC 패턴
 3. 목적
     1) 소프트웨어 설계에서 자주 발생하는 문제를 효율적으로 해결하기 위해 설계 유형을 제공하는 것.
     2) 협업과 유지보수에서 유용
+
+[ 싱글톤 패턴 ]
+1. 정의 : 프로그램 내 객체(인스턴스)가 단 하나만 존재하는 설계
+2. 목적 : 하나의 객체를 만들고, 그 객체를 공유
+    - 여러개의 객체가 존재하면 서로다른 메모를 사용하므로, 공유하는데 제약이 있다.
+    - 협업을 할 때, 굳이 여러개의 객체가 필요없는 경우에 사용
+3. 만드는 법
+    1) 기본 생성자를 private로 선언한다.
+          private 생성자명(){}
+    2) private static final로 객체를 선언한다.
+          private static final 클래스명 변수명 = new 생성자명();
+    3) public static으로 getInstance 메소드를 선언한다. -> 자동완성이 된다? ( geti )
+          public static 반환타입 getInstance(){
+              return 변수명;
+          }
+4. 호출 방법 : 클래스명.getInstance();
+
+[ MVC 패턴 ]
+1. 정의 : (웹/앱)소프트웨어 개발에서 주로 사용되는 디자인 패턴으로
+         주요 역할을 세가지로 분리하여 효율성을 높인다.
+2. 목적 : 코드를 모듈화하여 프로젝트 협업 간 효율성을 높인다.
+3. 장점 : 유지보수, 모듈화, 단일책임기능 등
+4. 단점 : 관리 복잡도의 상승 등
+5. 사용처 : 다양한 실무 프레임워크(Spring)에서 권장하는 패턴
+6. 레이어/계층
+    1) View         : 입출력 담당
+        (1) 주로 웹/앱에서는 HTML/CSS/JS/JSP/REACT/FLUTTER...(프론트엔드 영역)
+        (2) 사용자로부터 입력과 출력을 받는다.
+        (3) 관례적으로 View 클래스에서만 print 함수와 scan 함수를 사용한다.
+    2) Controller   : Model과 View 사이의 제어/전달/유효성검사 담당
+        (1) 주로 웹/앱에서는 JAVA/PYTHON/node.js... (백엔드 영역)
+        (2) 사용자(View)로부터 요청을 받아 Model에게 전달하고, 처리 결과를 View에게 전달한다.
+        (3) MVC1 패턴      : Controller / View 병합 -> JSP
+        (4) MVC2 패턴      : Controller / View / Model 분리
+        (5) MVC2 3티어 패턴 : Controller / Service / View / Model 분리 -> Spring
+    3) Model        : 데이터 관리 담당
+        (1) 주로 웹/앱에서는 JAVA/PYTHON/node.js... (백엔드 영역)
+        (2) 외부 데이터베이스와 상호작용
+        (3) DAO(Date Access Object)   : 데이터에 접근하는 객체
+        (4) DTO(Date Transfer Object) : 데이터를 이동시키는 객체
+        (5) DTO는 데이터 모델이므로 싱글톤을 사용하지 않는다.
+7. 레이어 간 흐름도
+    1) 주문 요청
+        View ---DTO---> Controller ---DTO---> Model(DAO)
+    2) 주문 응답
+        Model(DAO) ---DTO---> Controller ---DTO---> View
+8. 파일/폴더를 MVC 기준으로 구분
+    - Project
+        - Controller
+            - MemberController
+            - BoardController
+        - Model
+            - DAO
+                - MemberDAO
+                - BoardDAO
+            - DTO
+                - MemberDTO
+                - BoardDTO
+        - View (추후에 HTML로 대체)
+            - MemberView
+            - BoardView
+        - Appstart
