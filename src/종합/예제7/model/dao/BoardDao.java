@@ -5,6 +5,13 @@ package 종합.예제7.model.dao;
 import 종합.예제7.model.dto.BoardDto;
 
 public class BoardDao {
+    // 싱글톤 만들기
+    private BoardDao(){}
+    private static final BoardDao dao = new BoardDao();
+    public static BoardDao getInstance() {
+        return dao;
+    }
+
     // 추후에 데이터베이스로 설계할 예정
     private BoardDto[] boardDB = new BoardDto[100];
     // 1. 등록 처리 메소드 : Controller로부터 DB에 저장할 객체를 받아서 저장
@@ -22,5 +29,7 @@ public class BoardDao {
     // 2. 조회 처리 메소드 : Controller로부터 모든 DB를 반환
     // 매개변수 : X
     // 반환값 : BoardDto[]
-
+    public BoardDto[] boardPrint(){
+        return boardDB;
+    }
 }

@@ -68,3 +68,5 @@
             - MemberView
             - BoardView
         - AppStart.class (main 함수를 갖는 클래스)
+
+- 종합예제7의 구조를 학습하자
