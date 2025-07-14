@@ -1,6 +1,9 @@
 package 종합.예제8.controller;
 
 import 종합.예제8.model.dao.BoardDao;
+import 종합.예제8.model.dto.BoardDto;
+
+import java.util.ArrayList;
 
 public class BoardController {
     // 1. 싱글톤 만들기
@@ -23,6 +26,12 @@ public class BoardController {
         result = boardDao.addBoard( content, writer );
 
         return result;
+    } // func end
+
+    // 4. 게시물 전체조회기능 구현
+    public ArrayList<BoardDto> getBoardList(){
+        // 1) dao에게 요청 후, 게시물을 반환받아 view에게 전달한다.
+        return boardDao.getBoardList();
     } // func end
     
 } // class end

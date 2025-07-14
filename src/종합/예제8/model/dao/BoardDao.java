@@ -30,4 +30,10 @@ public class BoardDao {
 
         return result;
     } // func end
+
+    // 4. 게시물 전체조회 기능 구현
+    public ArrayList<BoardDto> getBoardList(){
+        // 1) controller에게 리스트 반환하기.
+        return BoardDB;
+    } // func end
 } // class end
