@@ -1,0 +1,46 @@
+[ 데이터베이스 ]
+1. 정의 : 자료들의 집합
+2. 종류
+    1) 관계형 데이터베이스 : *표(테이블) 형식* ( 실무에서 가장 많이 사용 )
+    2) NOSQL 데이터베이스 : 객체 형식
+3. 목적
+    1) 데이터의 체계적인 관리
+    2) 데이터의 중복 최소화 ( 무결성 )
+    3) 동시 접근과 공유
+    4) 보안
+[ 관계형 데이터베이스 ]
+1. 정의
+    1) 행(가로)과 열(세로)로 이루어진 데이터의 집합
+    2) 표(테이블)의 고유/식별(PK) 값을 참조하여 다른 테이블과의 종속 관계 표현
+2. 소프트웨어 종류( DBMS )
+    1) Oracle    2) MySQL    3) MariaDB
+3. 필수 용어
+    1) DB   : 데이터베이스, 자료들의 집합
+    2) DBA  : 데이터베이스 관리자
+    3) DBMS : 데이터베이스 관리 시스템
+        [ PC1 ] <---- [ DBMS ] <---- [ PC2 ]
+          DB            SQL            DBA
+        -> 관리자(DBA)는 DBMS를 이용하여 특정한 PC의 DB를 조작한다.
+    4) DB Server : 데이터베이스가 설치된 PC
+        * Server : 자료를 제공하는 입장
+        * Client : 자료를 제공받는 입장
+    5) SQL  : 데이터베이스를 조작하기 위한 언어
+
+[ SQL ]
+1. 정의 : 데이터베이스에서 데이터를 조작하기 위한 프로그램 언어
+2. 주요 SQL
+    1) DDL : 데이터베이스 정의 언어
+    2) DML : 데이터베이스 조작 언어
+    3) DCL : 데이터베이스 제어 언어
+    4) TCL : 트랜잭션 제어 언어
+
+[ MySQL 설치 ]
+1. MySQL Community (GPL) Downloads »
+2. MySQL Installer for Windows
+3. No thanks, just start my download.
+4. [ Custom ] -> [ MySQL Server 8.x ]
+              -> [ Applications ] -> [ MySQL Workbench 8.x ] 설치
+5. [ Type and Networking ]
+    port : 3306 ( 접속 번호 - 변경 x )
+6. [ Accounts and Roles ]
+    password : 1234 ( 학원이라서 )
