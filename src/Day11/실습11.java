@@ -56,8 +56,8 @@ public class 실습11 {
         Book book3 = new Book( "책3", "저자3" );
         library.add( book1 );    library.add( book2 );    library.add( book3 );
         for ( Book book : library ){
-            System.out.println("책이름 : " + book.title);
-            System.out.println("저자명 : " + book.author);
+            System.out.println("책이름 : " + book.getTitle());
+            System.out.println("저자명 : " + book.getAuthor());
         } // for end
 
         //[문제 7] Scanner를 사용하여 사용자로부터 문자열을 계속해서 입력받습니다.
@@ -84,13 +84,4 @@ public class 실습11 {
         System.out.println( subject );
 
     } // main end
-} // class end
-
-class Book{
-    String title;
-    String author;
-    public Book(String title, String author) {
-        this.title = title;
-        this.author = author;
-    }
 } // class end
