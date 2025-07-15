@@ -158,7 +158,66 @@ create table board(								# 게시물 테이블 설계
 select * from board;
 # 테이블 간의 관계 확인 : [database] -> [Reverse Engineer] -> [Stored Connection] -> [database 선택]
 
+/*
+1. 프로토타입을 구현하기 위한 주요 기능 판단
+	1) 회원가입
+    2) 로그인
+    3) 도서등록
+    4) 도서대출
+    5) 도서반납
+    6) 사용자별 대출 현황
+    7) 도서목록 반환
+    8) 로그아웃
+2. 주요 기능에 따른 데이터 메모리 설계
+	1) member table		- 회원 목록
+		(1) 회원코드
+        (2) 회원아이디
+        (3) 회원비밀번호
+        (4) 회원이름
+        (5) 회원연락처
+	2) admin talbe		- 관리자 목록
+		(1) 관리자아이디
+        (2) 관리자비밀번호
+    3) book table		- 도서 목록
+		(1) 도서코드
+        (2) 도서이름
+    4) loanList table	- 대출 목록
+		(1) 대출코드
+        (2) 도서코드
+3. 메모리 설계에 따른 SQL 작성
+	1) member table		- 회원 목록
+	2) admin talbe		- 관리자 목록
+    3) book table		- 도서 목록
+    4) loanList table	- 대출 목록
+4. SQL 다이어그램 표현
+*/
+drop database if exists library;
+create database library;
+use library;
 
+create table member(
+	mCode smallint auto_increment,
+	mId varchar(20) not null unique,
+	mPwd varchar(20) not null,
+	mName varchar(10) not null,
+	mPhone varchar(13) not null unique,
+	constraint primary key(mCode)
+);
 
+create table book( 
+	bCode mediumint auto_increment, 
+	bName varchar(50) not null, 
+	bAuthor varchar(50) not null,
+	constraint primary key(bCode)
+);
 
-
+create table loan(
+    lCode mediumint auto_increment ,
+    bCode mediumint,
+    mCode smallint,
+    loanDate datetime default now(),
+    returnDate datetime default now(),
+	constraint primary key( lCode ),
+	constraint foreign key( bCode ) references book( bCode), 
+	constraint foreign key( mCode ) references member( mCode)
+);
