@@ -7,13 +7,20 @@
 	1) show
 		(1) show databases;						: DB 서버 내 전체 데이터베이스 목록 조회
         (2) show variables like 'datadir';		: DB 서버 내 로컬 경로 조회
+        (3) show tables;						: 활성화중인 데이터베이스 내 모든 테이블 조회
 	2) use 데이터베이스명;							: DB 서버 내 지정한 데이터베이스 활성화
 3. 데이터베이스 정의어(DDL)
 	1) create
 		(1) create database 데이터베이스명;			: 데이터베이스 생성
+        (2) create table 테이블명(
+				속성명1 타입 제약조건,
+                속성명2 타입 제약조건
+			);
     2) drop
 		(1) drop database 데이터베이스명;			: 지정한 데이터베이스 삭제
         (2) drop database if exists 데이터베이스명;	: 지정한 데이터베이스가 존재하면, 데이터베이스 삭제
+        (3) drop table 테이블명;					: 지정한 테이블 삭제
+        (4) drop table if exists 테이블명;		: 지정한 테이블이 존재하면, 테이블 삭제
     3) alter
     
 [ 데이터 타입 ] : 테이블 내 속성들이 갖는 자료들의 타입
@@ -24,7 +31,7 @@
     4) int			: 4byte, 약 +-21억***
     5) bigint		: 8byte, +-21억 이상
 		* signed	: 부호가 있다(+ -), 기본값
-		* unsigned  : 부호가 없다(절대값) -> 허용범위가 늘어난다.
+		* unsigned  : 부호가 없다(절대값) -> 허용범위가 2배로 늘어난다.
 			-> int unsigned : 약 42억까지
 2. 실수
 	1) float		: 4byte,  소수점
@@ -40,7 +47,7 @@
     2) varchar(길이) : 문자열 표현, 가변길이, 최대 255글자***
 		varchar(5)	"유재석" [유] [재] [석] -> 남은 공간 삭제
 	3) text			: 문자열 표현, 최대 6만글자
-    4) longtext		: 문자열 표현, 최대 42억글자
+    4) longtext		: 문자열 표현, 최대 42억글자, 4GB
 5. 논리
 	1) bool			: true / false, tinyint와 같다.
 
@@ -55,10 +62,10 @@
 5. primary key		: 기본키(PK), 식별 가능한 고유 필드키
 	-> 학번, 사번, 주민등록번호, 주문번호, 제품번호...
     -> not null + unique가 포함되어있는 속성
-    -> constraint primary key(속성)
+    -> 선언 : constraint primary key(속성)
 6. foreign key		: 외래키(FK), 다른 테이블의 기본키를 참조하는 키
 	-> null과 중복 가능
-    -> constraint foreign key(속성) references 참조테이블명(기본키);
+    -> 선언 : constraint foreign key(속성) references 참조테이블명(기본키);
     -> 참조할 기본키의 타입과 같아야한다.
     -> 관례적으로 기본키의 이름과 외래키의 이름을 같게 한다.
 */
