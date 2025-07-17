@@ -154,10 +154,3 @@ select * from member limit 2;						# member 테이블에서 상위 2개만 조�
 select * from member limit 0, 2;					# member 테이블에서 0번 레코드부터 2개 조회
 select * from member limit 2, 3;					# member 테이블에서 2번 레코드부터 3개 조회
 select * from member order by mheight desc limit 3;	# member 테이블을 mheight를 기준으로 내림차순 정렬 후, 상위 3개만 조회
-
-
-
-
-
-
-
