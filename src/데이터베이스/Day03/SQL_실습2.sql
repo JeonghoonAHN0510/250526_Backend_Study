@@ -7,7 +7,7 @@
 -- join_date (가입일): 날짜/시간, **기본값(Default)**은 현재 날짜/시간
 -- points (포인트): 정수, **기본값(Default)**은 0
 create table members(
-	member_id char(20) not null,
+	member_id char(20) not null,		# primary key에 not null이 포함되어있어서, 생략해도 되긴하다.
     member_name char(50) not null,
     email char(100) not null unique,
     join_date datetime default now(),
