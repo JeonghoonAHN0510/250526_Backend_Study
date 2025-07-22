@@ -16,7 +16,6 @@ public class WaitingController {
     // dao에 접근하기 위해서 dao 싱글톤에 접근
     WaitingDao waitingDao = WaitingDao.getInstance();
 
-
     // 1. 대기등록 메소드
     // 메소드명 : waitingRegis
     // 매개변수 : String phone, int count
@@ -29,7 +28,6 @@ public class WaitingController {
         // 3) 결과 리턴
         return result;
     } // func end
-
 
     // 2. 대기현황 출력 메소드
     // 메소드명 : waitingPrint

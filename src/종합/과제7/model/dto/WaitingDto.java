@@ -20,5 +20,5 @@ public class WaitingDto {
                 "phone='" + phone + '\'' +
                 ", count=" + count +
                 '}';
-    }
+    } // func end
 } // class end

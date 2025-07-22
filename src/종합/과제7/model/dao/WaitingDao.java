@@ -1,13 +1,21 @@
 package 종합.과제7.model.dao;
 
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 import 종합.과제7.model.dto.WaitingDto;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class WaitingDao {
     // 싱글톤 만들기
-    private WaitingDao(){}
+    private WaitingDao(){
+        // 싱글톤 생성 시, CSV 로드
+        openCSV();
+    } // func end
     private static final WaitingDao instance = new WaitingDao();
     public static WaitingDao getInstance() {
         return instance;
@@ -23,11 +31,11 @@ public class WaitingDao {
     public boolean waitingRegis( WaitingDto waitingDto ){
         // 1) waitingDto를 DB에 저장한다
         waitingDB.add( waitingDto );
-
+        // CSV 저장
+        saveCSV();
         // 2) 결과를 리턴한다.
         return true;
     } // func end
-
 
     // 2. 대기현황 출력 메소드
     // 메소드명 : waitingPrint
@@ -40,7 +48,7 @@ public class WaitingDao {
 
     //==========================================================
     // CSV 파일 경로 지정
-    private String path = "src/종합/과제7";
+    private String path = "src/종합/과제7/data.csv";
     // [1] CSV 파일 연동 함수
     public void openCSV(){
         // 1) 파일 객체 생성
@@ -61,18 +69,50 @@ public class WaitingDao {
 
     // [2] CSV 입력(호출) 함수
     public void loadCSV(){
-        // 1) CSV 정보를 받아와서
-
-        // 2) CSV를 .readAll(); 하여 List 배열로 바꾸고
-
-        // 3) List 배열을 순회하면서 row 데이터를 객체에 저장하고
-
-        // 4) 생성한 객체를 리스트에 저장
-
+        try {
+            // 1) CSV 정보를 받아와서
+            FileReader fileReader = new FileReader( path );
+            CSVReader csvReader = new CSVReader( fileReader );
+            // 2) CSV를 .readAll(); 하여 List 배열로 바꾸고
+            List<String[]> inDate = csvReader.readAll();
+            System.out.println( inDate );
+            // 3) List 배열을 순회하면서 row 데이터를 객체에 저장하고
+            for ( String[] row : inDate ){
+                String phone = row[0];
+                int count = Integer.parseInt(row[1]);
+                WaitingDto waitingDto = new WaitingDto( phone, count );
+                // 4) 생성한 객체를 리스트에 저장
+                waitingDB.add( waitingDto );
+            } // for end
+            csvReader.close();
+        } catch ( Exception e ){
+            System.out.println( e );
+        } // try-catch end
     } // func end
 
     // [3] CSV 출력(저장) 함수
     public void saveCSV(){
-
+        try {
+            // 1) 파일 쓰기모드 객체 생성
+            FileWriter fileWriter = new FileWriter( path );
+            // 2) CSV 객체 생성
+            CSVWriter csvWriter = new CSVWriter( fileWriter );
+            // 3) 빈 리스트 생성
+            List<String[]> outData = new ArrayList<>();
+            // 4) 모든 정보를 빈 리스트에 담기
+            for ( WaitingDto waitingDto : waitingDB ){
+                // 5) dto 내용을 row에 담기
+                String count = Integer.toString(waitingDto.getCount());
+                String[] row = { waitingDto.getPhone(), count };
+                // 6) outData에 담기
+                outData.add( row );
+            } // for end
+            System.out.println( outData );
+            // 7) 저장된 데이터를 내보닌다.
+            csvWriter.writeAll( outData );
+            csvWriter.close();
+        } catch ( Exception e ){
+            System.out.println( e );
+        } // try-catch end
     } // func end
 } // class end
