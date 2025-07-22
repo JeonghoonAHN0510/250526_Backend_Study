@@ -7,6 +7,10 @@ import 종합.과제7.model.dto.WaitingDto;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +19,8 @@ public class WaitingDao {
     private WaitingDao(){
         // 싱글톤 생성 시, CSV 로드
         openCSV();
+        // 싱글톤 생성 시, DB 연동
+        connectDB();
     } // func end
     private static final WaitingDao instance = new WaitingDao();
     public static WaitingDao getInstance() {
@@ -44,6 +50,27 @@ public class WaitingDao {
     public ArrayList<WaitingDto> waitingPrint(){
         // 1) waitingDB 리턴
         return waitingDB;
+    } // func end
+
+    //==========================================================
+    // DB 연동에 필요한 멤버변수 : 서버주소, 계정명, 비밀번호
+    private String DB_URL = "jdbc:mysql://localhost:3306/mydb0722";
+    private String DB_ID = "root";
+    private String DB_PWD = "1234";
+    // DB 연동 결과를 갖는 인터페이스 생성
+    private Connection conn;
+    // 1. DB 연동 함수 -> 싱글톤 객체가 생성될 때 실행
+    public void connectDB(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("[MYSQL 드라이브 로드 성공]");
+            conn = DriverManager.getConnection( DB_URL, DB_ID, DB_PWD );
+            System.out.println("[데이터베이스 연동 성공]");
+        } catch ( ClassNotFoundException e ){
+            System.out.println("[MYSQL 드라이브 로드 실패]");
+        } catch ( SQLException e ){
+            System.out.println("[데이터베이스 연동 실패]");
+        } // try-catch end
     } // func end
 
     //==========================================================
