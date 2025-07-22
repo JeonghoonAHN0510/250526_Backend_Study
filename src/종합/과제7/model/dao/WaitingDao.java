@@ -39,6 +39,8 @@ public class WaitingDao {
         waitingDB.add( waitingDto );
         // CSV 저장
         saveCSV();
+        // DB 저장
+        insertDB( waitingDto );
         // 2) 결과를 리턴한다.
         return true;
     } // func end
@@ -72,6 +74,20 @@ public class WaitingDao {
             System.out.println("[데이터베이스 연동 실패]");
         } // try-catch end
     } // func end
+    // 2. DB에 insert 함수
+    public void insertDB( WaitingDto waitingDto ){
+        try {
+            String phone = waitingDto.getPhone();
+            int count = waitingDto.getCount();
+            String SQL = "insert into waiting values (\"" + phone + "\", " + count + ");";
+            System.out.println( SQL );
+            PreparedStatement ps = conn.prepareStatement( SQL );
+            ps.execute();
+        } catch ( SQLException e ){
+            System.out.println("[데이터베이스 저장 실패]");
+        } // try-catch end
+    } // func end
+
 
     //==========================================================
     // CSV 파일 경로 지정
