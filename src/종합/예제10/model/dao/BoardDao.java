@@ -1,7 +1,10 @@
 package 종합.예제10.model.dao;
 
+import 종합.예제10.model.dto.BoardDto;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class BoardDao {
     // 싱글톤 만들기
@@ -24,6 +27,33 @@ public class BoardDao {
             conn = DriverManager.getConnection( DB_URL, DB_ID, DB_PWD );
         } catch (Exception e) {
             System.out.println( e );
+        } // try-catch end
+    } // func end
+
+    // 1. 등록 기능 구현
+    // 메소드명 : boardWrite
+    // 매개변수 : BoardDto boardDto -> controller 로부터 저장할 값들을 boardDto로 받는다.
+    // 반환값 : true(성공)/false(실패) -> boolean
+    public boolean boardWrite(BoardDto boardDto){
+        try {
+            // 1. SQL 작성
+            String sql = "insert into board( bcontent, bwriter ) values ( ? , ? );";
+            // 2. SQL 기재 : PreparedStatement
+            PreparedStatement ps = conn.prepareStatement( sql );
+            // 3. SQL 매개변수 대입 : ps.setXXX()
+            ps.setString( 1, boardDto.getBcontent() );      // 첫번째 ?에 매개변수로 받은 boardDto의 bcontent값 대입
+            ps.setString( 2, boardDto.getBwriter() );       // 두번째 ?에 매개변수로 받은 boardDto의 bwriter값 대입
+            // 4. SQL 실행 : ps.executeUpdate() / ps.executeQuery()
+            int count = ps.executeUpdate();
+            // 5. SQL 결과 확인 및 리턴
+            if ( count >= 1 ){
+                return true;            // count가 1 이상이면, 저장성공
+            }else {
+                return false;           // count가 1 미만이면, 저장실패
+            } // if end
+        } catch ( Exception e ){
+            System.out.println( e );
+            return false;               // 예외 발생 시, 저장실패
         } // try-catch end
     } // func end
 
