@@ -1,6 +1,6 @@
-drop database if exists assignment10;
-create database assignment10;
-use assignment10;
+drop database if exists assignment8;
+create database assignment8;
+use assignment8;
 
 create table waiting(
 	wno int auto_increment,
