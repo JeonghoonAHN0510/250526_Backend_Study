@@ -1,5 +1,10 @@
 package Day20;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
 class BookDto{
 
 } // class end
@@ -35,10 +40,20 @@ public class Example1 {
             2) .equals()        : 객체의 값 비교 결과 반환
                 ==              : 객체의 주소 비교 결과 반환
             3) .hashCode()      : 객체의 해시값 반환
-
+        2. Class 클래스 : 클래스의 정보를 담는 클래스
+            -> 리플랙션 : 실행 중 객체 할당, 멤버분석
+            1) Class.forName()      : 실행 중, 지정한 클래스를 불러오는 함수
+            2) .getFields()         : 지정한 인스턴스의 모든 멤버변수를 배열로 반환
+            3) .getConstructors()   : 지정한 인스턴스의 모든 생성자를 배열로 반환
+            4) .getMethods()        : 지정한 인스턴스의 모든 메소드를 배열로 반환
+        3. Wrapper 클래스 : 8가지 기본타입을 참조타입으로 변환
+            -> 기본타입은 메소드가 없어서, 참조타입으로 변환하여 다양한 기능을 제공받는다.
+            종류 : Byte, Short, Integer, Long, Boolean, Float, Double, Character
+            1) XXX.parseXXX("문자열") : "문자열"을 XXX 타입으로 변환
+            2) String.valueOf(자료) : 자료를 "문자열"로 변환
         */
 
-        // [1] Object
+        // [1] Object 클래스
         // 1) Object 타입은 모든 타입에 상속하므로 타입변환이 가능하다.
         Object o1 = 3;                      // 정수를 Object로 분류할 수 있다.
         Object o2 = 3.14;                   // 실수를 Object로 분류할 수 있다.
@@ -75,6 +90,58 @@ public class Example1 {
         System.out.println( o11.hashCode() );
         System.out.println( o10.hashCode() );
 
+        System.out.println("========================================================================");
+        // [2] Class 클래스
+        String str = new String();
+        Class c1 = str.getClass();
+        System.out.println( c1 );                   // class java.lang.String
+
+        Integer value = 3;
+        Class c2 = value.getClass();
+        System.out.println( c2 );                   // class java.lang.Integer
+            // (1) Class.forName("클래스경로") : 지정한 클래스 경로에서 클래스를 불러오는 함수
+            //     -> 지정한 클래스 경로에서 불러오기 실패하면, 예외 발생
+        try {
+            Class.forName("java.lang.String");
+        } catch ( ClassNotFoundException e ){
+            System.out.println( e );
+        } // try-catch end
+        System.out.println("========================================================================");
+            // (2) .getFields() : 지정한 클래스의 멤버변수명을 배열로 반환
+        Field[] fields = c1.getFields();
+        for ( Field field : fields ){
+            System.out.println( field );
+        } // for end
+        System.out.println("========================================================================");
+            // (3) .getConstructors() : 지정한 클래스의 생성자를 배열로 반환
+        Constructor[] constructors = c1.getConstructors();
+        for ( Constructor constructor : constructors ){
+            System.out.println( constructor );
+        } // for end
+            // (4) .getMethods() : 지정한 클래스의 메소드를 배열로 반환
+        System.out.println("========================================================================");
+        Method[] methods = c1.getMethods();
+        for ( Method method : methods ){
+            System.out.println( method );
+        } // for end
+        System.out.println("========================================================================");
+        // [3] Wrapper 클래스
+        int value1 = 100;               // 자료 : 100, 타입 : int
+        Integer value2 = 100;           // 자료 : 100, 타입 : Integer
+            // (1) 언박싱 / 오토박싱
+        Integer value3 = value1;        // int -> Integer : 오토박싱
+        int value4 = value2;            // Integer -> int : 언박싱
+            // (2) 문자열 -> 기본타입 변환
+        int value5 = Integer.parseInt( "100" );             // "100" -> 100
+        double value6 = Double.parseDouble( "3.14" );       // "3.14" -> 3.14
+        float value7 = Float.parseFloat( "3.14" );          // "3.14" -> 3.14
+        byte value8 = Byte.parseByte( "100" );              // "100" -> 100
+        short value9 = Short.parseShort( "100" );           // "100" -> 100
+        long value10 = Long.parseLong( "100" );             // "100" -> 100
+        boolean value11 = Boolean.parseBoolean( "true" );   // "true" -> true
+            // (3) 기본타입 -> 문자열 변환
+        String s1 = 100 + "";                   // 방법1 : 자료 + ""
+        String s2 = String.valueOf( 100 );      // 방법2 : String.valueOf( 자료 )
 
     } // main end
 } // class end
