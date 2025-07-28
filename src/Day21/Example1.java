@@ -12,9 +12,24 @@ class 작업스레드1 implements Runnable{
             } catch ( Exception e ){
                 System.out.println( e );
             } // try-catch end
-        }
+        } // for end
     } // func end
 } // class end
+
+class 작업스레드2 extends Thread{
+    @Override
+    public void run() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        for ( int i = 1; i <= 5; i++ ){
+            toolkit.beep();
+            try {
+                Thread.sleep( 1000 );
+            } catch ( Exception e ){
+                System.out.println( e );
+            } // try-catch end
+        } // for end
+    } // func end
+} // class ned
 
 public class Example1 {
     public static void main(String[] args) {
@@ -47,7 +62,8 @@ public class Example1 {
                Thread thread = new Thread( new Runnable(){ public void run(){} }; )
             2) 구현체
                구현 클래스를 생성한 뒤, Thread thread = new Thread( 구현 클래스 );
-            3)
+            3) 상속 -> 상속은 클래스당 1번
+               상속 클래스를 생성한 뒤, 상속받은 메소드를 구현한 뒤, 상속클래스명 변수명 = new 상속클래스명();
         5. 주요 클래스/인터페이스
             1) Thread 클래스
                 (1) start 메소드 : 구현된 run 메소드를 실행하는 메소드
@@ -114,6 +130,21 @@ public class Example1 {
             System.out.println("[3] main 스레드가 읽어주는 코드 " + i);
             try {
                 Thread.sleep( 1000 );
+            } catch ( Exception e ){
+                System.out.println( e );
+            } // try-catch end
+        } // for end
+
+        // [4] 멀티 스레드 : 상속으로 구현
+        // 1) 소리 5번
+        작업스레드2 thread2 = new 작업스레드2();
+        thread2.run();
+
+        // 2) 출력 5번
+        for ( int i = 1; i <= 5; i++ ){
+            System.out.println("[1] main 스레드가 읽어주는 코드 " + i);
+            try {
+                Thread.sleep( 1000 );           // Thread.sleep( ms ) : ms 만큼 현재 스레드만큼 일시정지시킨다
             } catch ( Exception e ){
                 System.out.println( e );
             } // try-catch end
