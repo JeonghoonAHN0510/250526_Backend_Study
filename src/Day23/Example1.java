@@ -1,7 +1,9 @@
 package Day23;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class Example1 {
     public static void main(String[] args) {
@@ -11,6 +13,7 @@ public class Example1 {
         - 인터페이스 종류 : List, Set, Map...
         - 구현체 종류
             1) List : ArrayList, LinkedList, Vector...
+                - 배열/링크 구조, 인덱스 O -> 중복 허용
                 (1) .add(자료)
                 (2) .set( 인덱스, 자료 )
                 (3) .get(인덱스)
@@ -21,6 +24,7 @@ public class Example1 {
                 (8) .isEmpty()
                 (9) .clear()
             2) Set  : HashSet, TreeSet...
+                - 집합 구조, 인덱스 X -> 중복 허용 X
             3) Map  : HashMap, TableMap...
 
 
@@ -77,6 +81,18 @@ public class Example1 {
         list2.forEach( (str) -> {
             System.out.println("str = " + str);
         });
+
+        // List : 순서대로 요소를 저장하는 자료구조
+        // 배열구조 : [ 5 ] [ 4 ] [ 7 ] [ 9 ]
+        // -> 만약 중간 인덱스가 삭제되면, 뒤 인덱스들은 한 칸씩 이동
+        // 링크구조 : [ 5 ] ->  [ 4 ] -> [ 7 ] -> [ 9 ]
+        // -> 만약 중간 인덱스가 삭제되면, 그 앞 인덱스만 변경
+        // [4] ArrayList : 배열 구조로 사용되는 List 구현체 + 메소드 비동기화( 단일 스레드 플랫폼 )
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        // [5] Vector : 배열 구조로 사용되는 List 구현체 + 메소드 동기화( 멀티 스레드 플랫폼 )
+        Vector<Integer> vector = new Vector<>();
+        // [6] LinkedList : 링크(체인) 구조로 사용되는 List 구현체 + 중간 삽입/삭제 시 효율성 극대화
+        LinkedList<Integer> linkedList = new LinkedList<>();
 
     } // main end
 } // class end
