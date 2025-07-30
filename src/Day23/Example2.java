@@ -9,8 +9,9 @@ public class Example2 {
     public static void main(String[] args) {
         /*
         [ 컬렉션 프레임워크 ] - Set : 순서 보장없이 요소들을 저장하는 구조(집합 구조)
-        1. HashSet :
-        2. TreeSet :
+        1. HashSet : 중복없는 여러개의 요소 저장 + 빠르다
+        2. TreeSet : 중복없는 여러개의 요소 저장 + 자동정렬(오름차순)
+        3. LinkedHashSet : 중복없는 여러개의 요소 저장 + 링크구조 + 느리다
         */
         // [1] HashSet 객체 생성
         Set<String> set1 = new HashSet<>();
@@ -45,13 +46,13 @@ public class Example2 {
         set1.forEach( str -> System.out.println("str = " + str) );
 
         // [4] 구현체
-        // 1) HashSet : 중복없는 여러개의 요소 저장 + 빠르다
+        // 1) HashSet
         HashSet<Integer> hashSet = new HashSet<>();
 
         // 2) LinkedHashSet : 중복없는 여러개의 요소 저장 + 링크구조 + 느리다
         LinkedHashSet linkedHashSet = new LinkedHashSet();
 
-        // 3) TreeSet : 중복없는 여러개의 요소 저장 + 자동정렬(오름차순)
+        // 3) TreeSet
         TreeSet<Integer> treeSet = new TreeSet<>();
         treeSet.add( 30 );  treeSet.add( 20 );
         System.out.println("treeSet = " + treeSet);     // [20, 30]
@@ -62,7 +63,7 @@ public class Example2 {
         set2 = linkedHashSet;
         set2 = treeSet;
 
-        // [5] JDBC에서의 ResultSet
+        // [5] 활용 : JDBC에서의 ResultSet
 
     } // main end
 } // class end
