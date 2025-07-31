@@ -1,33 +1,28 @@
 class Solution {
-    public String solution(String s) {
-        StringBuilder answer = new StringBuilder();
-        int idx = 0;
-        for (char c : s.toCharArray()) {
-            if (c == ' ') {
-                answer.append(' ');
-                idx = 0;
-            } else {
-                if (idx % 2 == 0) {
-                    answer.append(Character.toUpperCase(c));
-                } else {
-                    answer.append(Character.toLowerCase(c));
-                }
-                idx++;
-            }
-        }
-        return answer.toString();
-    }
-}
+    public String solution(int[] food) {
+        String answer = "";
+
+        StringBuilder sb = new StringBuilder();
+        for ( int i = 1; i < food.length; i++ ){
+            int count = food[i] / 2;
+            for ( int j = 1; j <= count; j++ ){
+                sb.append(i);
+            } // for end
+        } // for end
+        answer = sb + "0" + sb.reverse();
+        return answer;
+    } // func end
+} // class end
 
 public class test {
     public static void main(String[] args) {
 
-        String answer1 = new Solution().solution("try hello world");
-        String answer2 = new Solution().solution(	"a          a    ");
-        String answer3 = new Solution().solution("  TRy HElLo  WORLD ");
-        System.out.println(answer1);
-        System.out.println(answer2);
-        System.out.println(answer3);
+        int[] food1 = { 1, 3, 4 ,6 };
+        int[] food2 = { 1, 7, 1, 2 };
+        String answer1 = new Solution().solution( food1 );
+        String answer2 = new Solution().solution( food2 );
+        System.out.println("answer1 = " + answer1);
+        System.out.println("answer2 = " + answer2);
 
     } // main end
 } // class end
