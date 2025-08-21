@@ -1,15 +1,35 @@
-class Solution {
-    public String solution(int[] food) {
-        String answer = "";
+import java.util.Arrays;
 
-        StringBuilder sb = new StringBuilder();
-        for ( int i = 1; i < food.length; i++ ){
-            int count = food[i] / 2;
-            for ( int j = 1; j <= count; j++ ){
-                sb.append(i);
+class Solution {
+    public String solution(String X, String Y) {
+        StringBuilder result = new StringBuilder();
+
+        char[] XList = X.toCharArray();
+        char[] YList = Y.toCharArray();
+
+        Arrays.sort(XList);
+        Arrays.sort(YList);
+        System.out.println("XList = " + Arrays.toString(XList));
+        System.out.println("YList = " + Arrays.toString(YList));
+
+        // check로 구별해가며 for문 진행해보기
+        int check = YList.length - 1;
+        for ( int i = XList.length - 1; i >= 0; i-- ){
+            char x =  XList[i];
+            for ( int j = check; j >= 0 ; j-- ){
+                char y =  YList[j];
+                if ( x == y ){
+                    result.append(x);
+                    check = j - 1;
+                    break;
+                } // if end
             } // for end
         } // for end
-        answer = sb + "0" + sb.reverse();
+
+        String answer = result.toString();
+        if ( answer.isEmpty() ) return "-1";
+        if ( answer.charAt(0) == '0' ) return "0";
+
         return answer;
     } // func end
 } // class end
@@ -17,12 +37,16 @@ class Solution {
 public class test {
     public static void main(String[] args) {
 
-        int[] food1 = { 1, 3, 4 ,6 };
-        int[] food2 = { 1, 7, 1, 2 };
-        String answer1 = new Solution().solution( food1 );
-        String answer2 = new Solution().solution( food2 );
-        System.out.println("answer1 = " + answer1);
-        System.out.println("answer2 = " + answer2);
+        String answer1 = new Solution().solution( "100", "2345" );
+        String answer2 = new Solution().solution( "100", "203045" );
+        String answer3 = new Solution().solution( "100", "123450" );
+        String answer4 = new Solution().solution( "12321", "42531" );
+        String answer5 = new Solution().solution( "5525", "1255" );
+        System.out.println("answer1 = " + answer1);     // -1
+        System.out.println("answer2 = " + answer2);     // 0
+        System.out.println("answer3 = " + answer3);     // 10
+        System.out.println("answer4 = " + answer4);     // 321
+        System.out.println("answer5 = " + answer5);     // 552
 
     } // main end
 } // class end
