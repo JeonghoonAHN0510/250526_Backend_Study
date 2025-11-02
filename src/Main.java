@@ -11,7 +11,28 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());       // 보석 개수 N
         int K = Integer.parseInt(st.nextToken());       // 가방 개수 K
-        PriorityQueue<Map<Integer, List<Integer>>> pq = new PriorityQueue<>();
+        PriorityQueue<String> pq = new PriorityQueue<>(new  Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                StringTokenizer st1 = new StringTokenizer(o1);
+                StringTokenizer st2 = new StringTokenizer(o2);
+                int weight1 = Integer.parseInt(st1.nextToken());
+                int price1 = Integer.parseInt(st1.nextToken());
+                int weight2 = Integer.parseInt(st2.nextToken());
+                int price2 = Integer.parseInt(st2.nextToken());
+                if (weight1 > weight2){
+                    return -1;
+                } else if (weight1 < weight2){
+                    return 1;
+                } else {
+                    if (price1 > price2){
+                        return -1;
+                    } else {
+                        return 1;
+                    } // if end
+                } // if end
+            } // func end
+        });
 
 
         Map<Integer, Integer> jewelMap = new TreeMap<>();
